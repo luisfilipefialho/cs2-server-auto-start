@@ -7,7 +7,6 @@ services:
       - ./:/app
     environment:
       - NODE_ENV=production
-      - DISCORD_TOKEN=your_token
-      - DISCORD_USER_ID=your_id
-      - DISCORD_GUILD_ID=your_id
-    command: ["node", "src/index.js"]
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - DISCORD_USER_ID=${DISCORD_USER_ID}
+      - DISCORD_GUILD_ID=${DISCORD_GUILD_ID}
