@@ -1,9 +1,8 @@
 services:
   discordbot:
-    context: .
-    dockerfile: Dockerfile
+    build: .
     container_name: discordbot
-    restart: never
+    restart: unless-stopped
     volumes:
       - ./:/app
     environment:
