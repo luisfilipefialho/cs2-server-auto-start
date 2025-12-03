@@ -1,6 +1,6 @@
 const { Client, Events, GatewayIntentBits } = require('discord.js');
-const { token, userId, guildId } = require('../config.json');
 const createCs2Watcher = require('./modules/cs2PresenceWatcher');
+require('dotenv').config();
 
 const client = new Client({ intents: [
   GatewayIntentBits.Guilds,
@@ -12,8 +12,8 @@ client.once(Events.ClientReady, (readyClient) => {
 });
 
 createCs2Watcher(client, {
-  guildId: userId,
-  userId: guildId,
+  guildId: process.env.DISCORD_USER_ID,
+  userId: process.env.DISCORD_GUILD_ID,
   checkInterval: 5000,
   requiredTime: 20000,
 
@@ -30,4 +30,4 @@ createCs2Watcher(client, {
   }
 });
 
-client.login(token);
+client.login(process.env.DISCORD_TOKEN);

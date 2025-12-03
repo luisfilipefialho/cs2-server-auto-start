@@ -1,0 +1,13 @@
+services:
+  discordbot:
+    build: .
+    container_name: discordbot
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+    environment:
+      - NODE_ENV=production
+      - DISCORD_TOKEN=your_token
+      - DISCORD_USER_ID=your_id
+      - DISCORD_GUILD_ID=your_id
+    command: ["node", "src/index.js"]
