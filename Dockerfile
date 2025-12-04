@@ -1,10 +1,10 @@
 FROM node:25-alpine
 
-WORKDIR /app
+WORKDIR /
 
 COPY package*.json ./
 RUN npm install --production
 
-COPY src/ ./src/
+COPY . .
 
 CMD ["node", "src/index.js"]
