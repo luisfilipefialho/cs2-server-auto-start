@@ -12,8 +12,8 @@ client.once(Events.ClientReady, (readyClient) => {
 });
 
 createCs2Watcher(client, {
-  guildId: process.env.DISCORD_USER_ID,
-  userId: process.env.DISCORD_GUILD_ID,
+  guildId: process.env.DISCORD_GUILD_ID,
+  userId: process.env.DISCORD_USER_ID,
   checkInterval: 5000,
   requiredTime: 20000,
 
