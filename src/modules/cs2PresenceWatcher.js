@@ -23,7 +23,7 @@ module.exports = function createCs2Watcher(client, options) {
     if (!member) return;
 
     const presence = member.presence;
-    const isPlayingCS2 = presence?.activities?.some(a => a.name === "Visual Studio Code") || false;
+    const isPlayingCS2 = presence?.activities?.some(a => a.name === process.env.ACTIVITY_NAME) || false;
 
     if (isPlayingCS2 && !state.isPlaying) {
       state.isPlaying = true;

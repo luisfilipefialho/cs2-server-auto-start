@@ -7,6 +7,9 @@ services:
       - ./:/app
     environment:
       - NODE_ENV=production
+      - ACTIVITY_NAME=${ACTIVITY_NAME}
       - DISCORD_TOKEN=${DISCORD_TOKEN}
       - DISCORD_USER_ID=${DISCORD_USER_ID}
       - DISCORD_GUILD_ID=${DISCORD_GUILD_ID}
+      - PTERODACTYL_FQDN=${PTERODACTYL_FQDN}
+      - PTERODACTYL_API_KEY=${PTERODACTYL_API_KEY}

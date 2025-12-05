@@ -1,4 +1,5 @@
 const { Client, Events, GatewayIntentBits } = require('discord.js');
+const createCs2ServerManager = require('./modules/cs2ServerManager');
 const createCs2Watcher = require('./modules/cs2PresenceWatcher');
 require('dotenv').config();
 
@@ -10,6 +11,9 @@ const client = new Client({ intents: [
 client.once(Events.ClientReady, (readyClient) => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
+
+
+const cs2Server = createCs2ServerManager(process.env.CS2_SERVER_ID);
 
 createCs2Watcher(client, {
   guildId: process.env.DISCORD_GUILD_ID,
@@ -23,10 +27,12 @@ createCs2Watcher(client, {
 
   onStopPlaying: () => {
     console.log("Usuário fechou o CS2.");
+    cs2Server.stop();
   },
 
   onStablePlaying: async () => {
     console.log("Usuário ficou 20s jogando CS2, executando funcao...");
+    cs2Server.start();
   }
 });
 
